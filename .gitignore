@@ -1,1 +1,13 @@
 # Created by .ignore support plugin (hsz.mobi)
+.idea/libraries/Gradle__com_fasterxml_jackson_core_jackson_annotations_2_8_9.xml
+*.xml
+*.class
+*.iml
+*.xml
+*.tar
+*.zip
+*.jar
+*.original
+*.war
+*.html
+*.html

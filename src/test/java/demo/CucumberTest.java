@@ -23,36 +23,11 @@ import static com.github.tomakehurst.wiremock.client.WireMock.urlEqualTo;
 public class CucumberTest{
 
     @ClassRule
-    public static WireMockClassRule fhirWireMock = new WireMockClassRule(
-            WireMockSpring.options().port(32001));
+    public static WireMockClassRule fhirWireMock = FhirWiremockUtils.INSTANCE.getWiremock();
 
     @ClassRule
-    public static WireMockClassRule nantomicsWireMock = new WireMockClassRule(
-            WireMockSpring.options().port(32002));
-
+    public static WireMockClassRule nantomicsWireMock = NantomicsWiremockUtils.INSTANCE.getWiremock();
 
     @ClassRule
-    public static WireMockClassRule nodeWireMock = new WireMockClassRule(
-            WireMockSpring.options().port(32003));
-
-
-    @BeforeClass
-    public static void setupMocks(){
-        setupNantomicsMock();
-        setupFhirMock();
-    }
-
-    private static void setupNantomicsMock() {
-        nantomicsWireMock.stubFor(get(urlEqualTo("/mock/nantomics/data"))
-                .willReturn(okJson("{\"data\" :\"nantomicsdata\"}")));
-        nantomicsWireMock.stubFor(get(urlEqualTo("/mock/nantomics/version"))
-                .willReturn(ok("nantomics-1.0")));
-    }
-
-    private static void setupFhirMock() {
-        fhirWireMock.stubFor(get(urlEqualTo("/mock/fhir/data"))
-                .willReturn(okJson("{\"data\" :\"fhirdata\"}")));
-        fhirWireMock.stubFor(get(urlEqualTo("/mock/fhir/version"))
-                .willReturn(ok("fhir-1.0")));
-    }
+    public static WireMockClassRule nodeWireMock = new WireMockClassRule(WireMockSpring.options().port(32003));
 }
