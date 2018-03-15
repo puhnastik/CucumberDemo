@@ -21,3 +21,8 @@ rabbitmq:
     exchange: analytics.fanout
     message.ttl.ms: 30000
   alert.queue: alert
+
+---
+
+nantomicsHost: "http://localhost:32002/mock/nantomics/data"
+fhirHost: "http://localhost:32001/mock/fhir/data"

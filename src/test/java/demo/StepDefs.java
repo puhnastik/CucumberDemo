@@ -10,10 +10,10 @@ import static org.hamcrest.Matchers.is;
 
 public class StepDefs extends AbstractDefs
 {
-    @When("^the client calls /version$")
-    public void the_client_issues_GET_version() throws Throwable
+    @When("^the client calls (.+)$")
+    public void the_client_issues_GET_endpoint(String endpoint) throws Throwable
     {
-        executeGet("http://localhost:8080/version");
+        executeGet("http://localhost:8080" + endpoint);
     }
 
     @Then("^the client receives status code of (\\d+)$")

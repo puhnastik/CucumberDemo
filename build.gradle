@@ -33,8 +33,15 @@ configurations {
 
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
+    compile("org.slf4j:slf4j-api")
+    compile group: 'org.slf4j', name: 'jul-to-slf4j', version: "1.7.25"
+    compile group: 'org.slf4j', name: 'jcl-over-slf4j', version: "1.7.25"
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.9.4'
+
 
     testCompile ("org.springframework.boot:spring-boot-starter-test",
+            "org.springframework.cloud:spring-cloud-contract-spec-pact",
+            "com.github.tomakehurst:wiremock:2.14.0",
         "info.cukes:cucumber-jvm:1.1.8",
         "info.cukes:cucumber-core:1.1.8",
         "info.cukes:cucumber-java:1.1.8",
